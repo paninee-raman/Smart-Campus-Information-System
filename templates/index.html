@@ -1,0 +1,250 @@
+html_page = '''
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Smart Campus Information System</title>
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Smart Campus Information System</h1>
+
+</header>
+
+<section>
+
+    <h2>Student Registration & Grade Evaluation</h2>
+
+    <form method="POST" action="/register">
+        <input type="text"
+               name="name"
+               placeholder="Student Name"
+               required>
+
+        <input type="number"
+               name="id"
+               placeholder="Student ID"
+               required>
+
+        <input type="number"
+               name="age"
+               placeholder="Age"
+               required>
+
+        <input type="number"
+               name="score"
+               placeholder="Exam Score"
+               required>
+
+        <button type="submit">
+            Register Student
+        </button>
+
+    </form>
+    {% if student_message %}
+        <p><b>{{student_message}}</b></p>
+    {% endif %}
+
+</section>
+
+<section>
+
+    <h2>Course Enrollment</h2>
+
+    <form method="POST" action="/course">
+        <input type="text"
+               name="course"
+               placeholder="Course Name"
+               required>
+
+        <input type="number"
+               name="credits"
+               placeholder="Credits"
+               required>
+
+        <button type="submit">
+            Add Course
+        </button>
+    </form>
+    {% if course_message %}
+        <p><b>{{course_message}}</b></p>
+    {% endif %}
+
+</section>
+
+<section>
+
+    <h2>Fee Calculation</h2>
+
+    <form method="POST" action="/fee">
+        <input type="number"
+               name="tuition"
+               placeholder="Tuition Fee"
+               required>
+
+        <input type="number"
+               name="hostel"
+               placeholder="Hostel Fee">
+
+        <input type="number"
+               name="transport"
+               placeholder="Transport Fee">
+
+        <button type="submit">
+            Calculate Fee
+        </button>
+    </form>
+    {% if fee_data %}
+        <p><b>Tuition Fee:</b>
+        ₹{{fee_data.tuition}}</p>
+        <p><b>Hostel Fee:</b>
+        ₹{{fee_data.hostel}}</p>
+        <p><b>Transport Fee:</b>
+        ₹{{fee_data.transport}}</p>
+        <p><b>Total Fee:</b>
+        ₹{{fee_data.total}}</p>
+    {% endif %}
+
+</section>
+
+<section>
+
+    <h2>Student Records</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Score</th>
+            <th>Grade</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td>{{s["ID"]}}</td>
+            <td>{{s["Name"]}}</td>
+            <td>{{s["Age"]}}</td>
+            <td>{{s["Score"]}}</td>
+            <td>{{s["Grade"]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</section>
+
+<section>
+
+    <h2>Courses</h2>
+    <ul>
+        {% for c in courses %}
+        <li>{{c[0]}} - {{c[1]}} Credits</li>
+        {% endfor %}
+    </ul>
+
+</section>
+
+<section>
+
+    <h2>Search Student</h2>
+    <form method="POST" action="/search">
+        <input type="number"
+               name="search_id"
+               placeholder="Enter Student ID">
+
+        <button type="submit">
+            Search
+        </button>
+    </form>
+    {% if search_result %}
+        {% if search_result.found %}
+            <p><b>Student Found</b></p>
+            <p><b>Name:</b>
+            {{search_result.name}}</p>
+            <p><b>Score:</b>
+            {{search_result.score}}</p>
+            <p><b>Grade:</b>
+            {{search_result.grade}}</p>
+        {% else %}
+            <p><b>Student Not Found</b></p>
+        {% endif %}
+    {% endif %}
+
+</section>
+
+<section>
+
+    <h2>Sort Students</h2>
+    <form method="POST" action="/sort">
+        <button type="submit">
+            Sort by ID
+        </button>
+
+    </form>
+    {% if sort_message %}
+        <p><b>{{sort_message}}</b></p>
+    {% endif %}
+
+</section>
+
+<section>
+
+    <h2>File-Based Academic Record Management</h2>
+    <form method="POST" action="/save">
+        <button type="submit">
+            Save Records & Generate Report
+        </button>
+    </form>
+    {% if file_report %}
+        {% if file_report.message %}
+            <p>{{file_report.message}}</p>
+        {% else %}
+            <p><b>Total Students:</b>
+            {{file_report.total}}</p>
+            <p><b>Average Marks:</b>
+            {{file_report.average}}</p>
+            <p><b>Topper:</b>
+            {{file_report.topper_name}}</p>
+            <p><b>Topper Score:</b>
+            {{file_report.topper_score}}</p>
+        {% endif %}
+    {% endif %}
+
+</section>
+
+
+<section>
+
+    <h2>Performance Analytics</h2>
+    <form method="POST" action="/analytics">
+        <button type="submit">
+            Generate Analytics
+        </button>
+    </form>
+    {% if analytics_data %}
+        {% if analytics_data.message %}
+            <p>{{analytics_data.message}}</p>
+        {% else %}
+            <p><b>Mean Score:</b> {{analytics_data.mean}}</p>
+            <p><b>Median Score:</b> {{analytics_data.median}}</p>
+            <p><b>Standard Deviation:</b> {{analytics_data.std}}</p>
+            <img src="data:image/png;base64,{{graph_url}}"
+                 width="600">
+        {% endif %}
+    {% endif %}
+
+</section>
+
+</body>
+
+</html>
+
+'''

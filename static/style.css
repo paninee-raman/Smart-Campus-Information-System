@@ -1,0 +1,146 @@
+ body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #ffe4ec, #fff0f5);
+    color: #444;
+}
+    
+header{
+    background: linear-gradient(135deg, #ff9eb5, #ffb6c1);
+    color: white;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0px 4px 10px rgba(255,182,193,0.5);
+}
+    
+header h1{
+    margin: 0;
+    font-size: 38px;
+}
+
+header p{
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+section{
+    background: white;
+    margin: 25px auto;
+    width: 85%;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px rgba(255,182,193,0.3);
+    transition: 0.3s;
+}
+
+section:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(255,105,180,0.25);
+}
+
+section h2{
+    color: #001f54;
+    border-left: 6px solid #ff85a2;
+    padding-left: 12px;
+    margin-bottom: 20px;
+}
+
+input{
+    width: 96%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ffc2d1;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: 0.3s;
+    background: #fff7fa;
+}
+
+input:focus{
+    border-color: #ff85a2;
+    outline: none;
+    box-shadow: 0px 0px 8px rgba(255,133,162,0.4);
+}
+
+button{
+    background: linear-gradient(135deg, #ff85a2, #ff4f81);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+button:hover{
+    background: linear-gradient(135deg, #ff6f91, #ff3366);
+    transform: scale(1.03);
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+table th{
+    background: #ff85a2;
+    color: white;
+    padding: 12px;
+}
+
+table td{
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ffd6e0;
+}
+    
+table tr:nth-child(even){
+    background: #fff5f8;
+}
+    
+table tr:hover{
+    background: #ffe4ec;
+}
+    
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+ul li{
+    background: #fff0f5;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 5px solid #ff85a2;
+}
+    
+.result{
+    font-weight: bold;
+    color: #ff3366;
+    margin-top: 10px;
+    font-size: 16px;
+}
+    
+footer{
+    text-align: center;
+    padding: 20px;
+    background: #ffb6c1;
+    color: white;
+    margin-top: 30px;
+}
+    
+@media(max-width: 768px){
+    section{
+        width: 95%;
+        }
+    input{
+        width: 93%;
+        }
+}
