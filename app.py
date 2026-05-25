@@ -205,73 +205,48 @@ def save():
 # ---------------------------------------------------
 
 class MissingFileOrFolderError(Exception):
-
     pass
 
 @app.route('/scan', methods=['POST'])
 def scan():
 
     global directory_result
-
     path = request.form['path']
-
     try:
-
         # Check if directory exists
         if not os.path.isdir(path):
-
             raise FileNotFoundError(
                 "Invalid Directory Path"
             )
-
         scanned_data = []
-
         # List directory contents
         items = os.listdir(path)
-
         # Empty folder exception
         if len(items) == 0:
-
             raise MissingFileOrFolderError(
                 "Empty Folder Detected"
             )
-
         # Store items
         for item in items:
-
             scanned_data.append(item)
-
         directory_result = {
-
             "success": True,
-
             "files": scanned_data
         }
-
     except FileNotFoundError as e:
-
         directory_result = {
-
             "success": False,
-
             "message": str(e)
         }
-
     except MissingFileOrFolderError as e:
-
         directory_result = {
-
             "success": False,
-
             "message": str(e)
         }
 
     except Exception as e:
-
         directory_result = {
-
             "success": False,
-
             "message": f"Unexpected Error: {e}"
         }
 
