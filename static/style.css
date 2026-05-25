@@ -135,6 +135,49 @@ footer{
     color: white;
     margin-top: 30px;
 }
+
+/* ---------- DIRECTORY SECTION ---------- */
+
+.directory-box{
+
+    margin-top: 20px;
+
+    background: #fff5f8;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    max-height: 300px;
+
+    overflow-y: auto;
+
+    border: 2px solid #ffc2d1;
+}
+
+.directory-item{
+
+    background: white;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    margin: 8px 0;
+
+    border-left: 5px solid #ff85a2;
+
+    font-family: monospace;
+}
+
+.directory-error{
+
+    margin-top: 15px;
+
+    color: #ff3366;
+
+    font-weight: bold;
+}
     
 @media(max-width: 768px){
     section{

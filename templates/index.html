@@ -218,6 +218,37 @@
 
 </section>
 
+<section>
+
+    <h2>Directory Scanning with Exception Handling</h2>
+    <form method="POST" action="/scan">
+        <input type="text"
+               name="path"
+               placeholder="Enter Directory Path"
+               required>
+        <button type="submit">
+            Scan Directory
+        </button>
+    </form>
+
+    {% if directory_result %}
+        {% if directory_result.success %}
+            <div class="directory-box">
+                {% for item in directory_result.files %}
+                    <p class="directory-item">
+                        {{item}}
+                    </p>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="directory-error">
+                {{directory_result.message}}
+            </p>
+        {% endif %}
+    {% endif %}
+
+</section>
+
 
 <section>
 
